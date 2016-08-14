@@ -1,5 +1,6 @@
 //
-// Code notes
+// Medium Outliner
+// Creates an outline based on your Medium document
 //
 
 var headers3Array = document.querySelectorAll('h3');
