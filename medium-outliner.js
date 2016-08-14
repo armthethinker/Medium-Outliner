@@ -3,14 +3,12 @@
 // Creates an outline based on your Medium document
 //
 
-var headers3Array = document.querySelectorAll('h3');
-var headers4Array = document.querySelectorAll('h4');
+var headersArray = document.querySelectorAll('h3.graf--h3, h4.graf--h4');
 
-headers3 = [];
-headers4 = [];
+headers = {};
 
-buildTextArray(headers3Array, headers3);
-buildTextArray(headers4Array, headers4);
+console.log(headersArray);
+
 
 // Hmmm - should probably make an object, not array
 function buildTextArray(givenArray, outputArray){
