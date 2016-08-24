@@ -13,7 +13,7 @@
 - [ ] Show word count
 - [ ] Show reading time
 - [ ] TK link
-- [ ] Scroll to
+- [ ] Scroll to ... **buggy**
 - [ ] Next TK
 - [ ] Toggle levels
 - [ ] Use something other than scroll, maybe `.is-selected`
