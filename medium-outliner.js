@@ -59,6 +59,7 @@ Updating logic
 // maybe use
 document.onscroll = function(){update()};
 
+setEventListenerOnItems();
 
 
 
@@ -71,16 +72,32 @@ Functions
 function update(){
    var newText = getText();
    if(newText != oldText){
-      var mo = document.querySelectorAll('.mo');
       globals.countTK = 0;
       headers = {};
       content = getContent();
+
+      setEventListenerOnItems();
+
+      var mo = document.querySelectorAll('.mo');
+
       // console.log('onscroll')
       for(i = 0; i < mo.length; i++)
          mo[i].parentNode.removeChild(mo[i]);
       mainLogic();
       oldText = newText;
    }
+}
+
+function setEventListenerOnItems(){
+   var moItems = document.querySelector('.mo-inner');
+
+   console.log('hello');
+
+   moItems.addEventListener('onClick', function(){
+      console.log(this);
+      console.log('click');
+      window.scroll(0, this.getAttribute('offsettop'));
+   });
 }
 
 function getContent(){
@@ -112,7 +129,8 @@ function insertHeaders(){
             'insertInto': document.querySelector('.mo-inner'),
             'type': 'div',
             'class': 'mo-item mo-' + el.name + containsTK,
-            'innerHTML': el.text
+            'innerHTML': el.text,
+            'yLocation': el.yLocation
          });
       }
    }
@@ -134,7 +152,8 @@ function buildTextArray(givenArray, outputArray){
       outputArray[i] = {
          "name": elName,
          "text": insertedText,
-         "TK": TK
+         "TK": TK,
+         "yLocation": givenArray[i].offsetTop
       };
    }
 }
@@ -143,14 +162,14 @@ function buildTextArray(givenArray, outputArray){
 function insertEl(el){
    var newEl = document.createElement(el.type);
 
-   newEl.setAttribute('class', el.class);
-   // newEl.setAttribute('domFlag', true);
-   // console.log(el.TK);
-
-   // if(el.TK == true){
-   //    var tkHTML = '<strong>' + el.innerHTML + '</strong>';
-   //    el.innerHTML = tkHTML;
-   // }
+   if(el.class != undefined){
+      newEl.setAttribute('class', el.class);
+   }
+   // console.log(el);
+   if(el.yLocation != undefined){
+      console.log(el.yLocation)
+      newEl.setAttribute('onClick', 'scroll(0,' + el.yLocation + ')');
+   }
 
    newEl.innerHTML = el.innerHTML;
 
