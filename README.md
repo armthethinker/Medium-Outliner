@@ -16,3 +16,4 @@
 - [ ] Scroll to
 - [ ] Next TK
 - [ ] Toggle levels
+- [ ] Use something other than scroll, maybe `.is-selected`
