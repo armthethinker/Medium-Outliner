@@ -40,8 +40,9 @@
 }
 
 .mo-item{
-   padding: 0px 10px 0px 10px;
-   margin-bottom: 12px;
+   padding: 2px 10px;
+   margin-bottom: 8px;
+}
 .mo-item:hover{
    background: rgba(230,230,230,0.8);
 }
