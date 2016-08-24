@@ -10,6 +10,7 @@
    max-height: calc(100% - 65px);
    padding: 10px 0 20px 0;
    overflow-y: scroll;
+   cursor: pointer;
 }
 @media (min-width: 1024px){
    .mo-container{
@@ -41,6 +42,8 @@
 .mo-item{
    padding: 0px 10px 0px 10px;
    margin-bottom: 12px;
+.mo-item:hover{
+   background: rgba(230,230,230,0.8);
 }
 .mo-H3{
 
