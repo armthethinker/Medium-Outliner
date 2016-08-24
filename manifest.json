@@ -1,0 +1,17 @@
+{
+   "manifest_version": 2,
+   "name": "Medium Outiner",
+   "description": "Creates an outline of your actively edited Medium post.",
+   "version": "1.0",
+   "icons": { "19": "icon.png" },
+   "content_scripts": [
+      {
+         "matches": ["https://*.medium.com/p/*/edit"],
+         "css": ["medium-outliner.css"],
+         "js": ["medium-outliner.js"]
+      }
+   ],
+    "permissions": [
+      "https://medium.com/p/*/edit"
+   ]
+}
