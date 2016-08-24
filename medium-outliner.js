@@ -10,6 +10,7 @@ Main logic
 */
 // Collect all headers
 var content = getContent();
+var oldText = getText();
 
 
 // Create a headers and globals object
@@ -55,13 +56,8 @@ Updating logic
 */
 // add event thing
 // console.log(document.querySelector('main'));
-document.onscroll = function(){
-   var mo = document.querySelectorAll('.mo');
-   globals.countTK = 0;
-   for(i = 0; i < mo.length; i++)
-      mo[i].parentNode.removeChild(mo[i]);
-   mainLogic();
-};
+// maybe use
+document.onscroll = function(){update()};
 
 
 
@@ -72,10 +68,30 @@ Functions
 
 */
 
+function update(){
+   var newText = getText();
+   if(newText != oldText){
+      var mo = document.querySelectorAll('.mo');
+      globals.countTK = 0;
+      headers = {};
+      content = getContent();
+      // console.log('onscroll')
+      for(i = 0; i < mo.length; i++)
+         mo[i].parentNode.removeChild(mo[i]);
+      mainLogic();
+      oldText = newText;
+   }
+}
+
 function getContent(){
    var elements = document.querySelectorAll('h3.graf--h3, h4.graf--h4, p.graf--p');
    return elements;
 };
+
+function getText(){
+   var article = document.querySelector('main')
+   return article.textContent;
+}
 
 // Insert headers
 function insertHeaders(){
